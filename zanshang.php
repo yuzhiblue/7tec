@@ -7,6 +7,7 @@
 		<div class="zs-modal-head">
 			<button type="button" class="close">×</button>
 			<p class="author">
+				<!--将下面的qq改成你自己的-->
           <img src="https://q2.qlogo.cn/headimg_dl?%20bs=630110598@qq.com&dst_uin=630110598@qq.com&dst_uin=630110598@qq.com&;dst_uin=630110598@qq.com&spec=100&url_enc=0&referer=bu_interface&term_type=PC" width="32px" height="32px" style="border-radius: 50%;"><?php $this->author(); ?>
 			</p>
 			<p class="tip"><i></i><span> (๑＞ڡ＜)☆谢谢老板~</span></p>
@@ -36,7 +37,7 @@
 			<label style="float: left;width: 130px;">
 				<input type="radio" name="zs-type" value="wechat" class="zs-type" style="float: left;">
 				<span class="zs-wechat">
-					<img class="darkmode-ignore" src="<?php $this->options->themeUrl('img/wechat-btn.png'); ?>" />
+					<img src="<?php $this->options->themeUrl('img/wechat-btn.png'); ?>" />
 				</span>
 			</label>
 		</div>
