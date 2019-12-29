@@ -10,8 +10,8 @@
             <div class="tags-box"><p>本文共有<?php echo art_count($this->cid); ?>个字。 <span itemprop="keywords" class="tags green"> # <?php $this->tags(' , ', true, ' '); ?></span><span class="smaller textdx">/ a </span><span class="bigger textdx"> A&nbsp; </span></p>
 </div>
             <div class="post-content" itemprop="articleBody">
-                <?php /// $this->content(); ?>
-                <?php echo WechatFans_Plugin::parseContent($this); ?>
+                <?php  $this->content(); //如果使用了WeChatfans插件，则注释掉此行。 ?>
+                <?php //echo WechatFans_Plugin::parseContent($this);//如果使用了WeChatfans插件，则开启此行。 ?>
             </div>
             <?php $this->need('zanshang.php'); //赞赏功能 ?>
         </div>

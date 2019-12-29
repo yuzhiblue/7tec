@@ -4,14 +4,14 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 function themeConfig($form) {
     $logoUrl = new Typecho_Widget_Helper_Form_Element_Text('logoUrl', NULL, NULL, _t('站点 LOGO 地址'), _t('在这里填入一个图片 URL 地址, 以在网站标题前加上一个 LOGO'));
     $form->addInput($logoUrl);
-    
-    $sidebarBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlock', 
+
+    $sidebarBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlock',
     array('ShowCategory' => _t('显示分类'),
     'ShowHotPosts' => _t('显示最热文章'),
     'ShowRecentComments' => _t('显示最近回复'),
     'ShowOther' => _t('显示其它杂项')),
     array('ShowCategory', 'ShowHotPosts', 'ShowRecentComments', 'ShowOther'), _t('侧边栏显示'));
-    
+
     $form->addInput($sidebarBlock->multiMode());
          //侧栏广告
     $Sidebarads = new Typecho_Widget_Helper_Form_Element_Textarea('Sidebarads', NULL, NULL, _t('侧栏广告'), _t('填写广告代码，只能在电脑端显示'));
@@ -22,7 +22,7 @@ function themeConfig($form) {
          //备案号
     $beian = new Typecho_Widget_Helper_Form_Element_Text('beian', NULL, $siteUrl, _t('备案号'), _t('填写备案号'));
     $form->addInput($beian);
-	
+
 	//统计代码
     $Analytics = new Typecho_Widget_Helper_Form_Element_Textarea('Analytics', NULL, NULL, _t('统计代码'), _t('填写你从谷歌Analytics或百度统计获取到的代码，不需要script标签'));
     $form->addInput($Analytics);
@@ -93,7 +93,7 @@ function pagex($archive,$index,$currentPage,$prev = '&laquo;', $next = '&raquo;'
         }
 
         $template = array_merge($default, $config);
-        
+
         $total = $_this->getTotal();
 
         if (!$hasNav && $total > $_this->parameter->pageSize) {
@@ -102,13 +102,13 @@ function pagex($archive,$index,$currentPage,$prev = '&laquo;', $next = '&raquo;'
                 $_this->_pageRow, $index);
             $nav = new boxrw($total, $currentPage, $_this->parameter->pageSize, $query);
 
-            echo '<' . $template['wrapTag'] . (empty($template['wrapClass']) 
+            echo '<' . $template['wrapTag'] . (empty($template['wrapClass'])
                     ? '' : ' class="' . $template['wrapClass'] . '"') . '>';
             $nav->render($prev, $next, $splitPage, $splitWord, $template);
             echo '</' . $template['wrapTag'] . '>';
         }
     }
-}   
+}
 /**
 * 重写box_render函数  修改分页样式
 */
@@ -126,7 +126,7 @@ class boxrw extends Typecho_Widget_Helper_PageNavigator_Box
      * @return void
      */
     public function render($prevWord = 'PREV', $nextWord = 'NEXT', $splitPage = 3, $splitWord = '...', array $template = array())
-    { 
+    {
         if ($this->_total < 1) {
             return;
         }
@@ -144,11 +144,11 @@ class boxrw extends Typecho_Widget_Helper_PageNavigator_Box
 
         // 定义item
         $itemBegin = empty($itemTag) ? '' : ('<' . $itemTag . '>');
-        $itemCurrentBegin = empty($itemTag) ? '' : ('<' . $itemTag 
+        $itemCurrentBegin = empty($itemTag) ? '' : ('<' . $itemTag
             . (empty($currentClass) ? '' : ' class="' . $currentClass . '"') . '>');
-        $itemPrevBegin = empty($itemTag) ? '' : ('<' . $itemTag 
+        $itemPrevBegin = empty($itemTag) ? '' : ('<' . $itemTag
             . (empty($prevClass) ? '' : ' class="' . $prevClass . '"') . '>');
-        $itemNextBegin = empty($itemTag) ? '' : ('<' . $itemTag 
+        $itemNextBegin = empty($itemTag) ? '' : ('<' . $itemTag
             . (empty($nextClass) ? '' : ' class="' . $nextClass . '"') . '>');
         $itemEnd = empty($itemTag) ? '' : ('</' . $itemTag . '>');
         $textBegin = empty($textTag) ? '' : ('<' . $textTag . '>');
@@ -190,7 +190,7 @@ class boxrw extends Typecho_Widget_Helper_PageNavigator_Box
         //输出中间页
         for ($i = $from; $i <= $to; $i ++) {
             $current = ($i == $this->_currentPage);
-            
+
             echo ($current ? $itemCurrentBegin : $itemBegin) . sprintf(($current ? $linkCurrentBegin : $linkBegin),
                 str_replace($this->_pageHolder, $i, $this->_pageTemplate) . $this->_anchor)
                 . $i . $linkEnd . $itemEnd;
@@ -201,7 +201,7 @@ class boxrw extends Typecho_Widget_Helper_PageNavigator_Box
             if ($to < $this->_totalPage - 1) {
                 echo $itemBegin . $textBegin . $splitWord . $textEnd . $itemEnd;
             }
-            
+
             echo $itemBegin . sprintf($linkBegin, str_replace($this->_pageHolder, $this->_totalPage, $this->_pageTemplate) . $this->_anchor)
                 . $this->_totalPage . $linkEnd . $itemEnd;
         }
@@ -259,7 +259,7 @@ echo mb_strlen($rs['text'], 'UTF-8');
 }
 /**
  * 判断时间区间
- * 
+ *
  * 使用方法  if(timeZone($this->date->timeStamp)) echo 'ok';
  */
 function timeZone($from){
@@ -289,18 +289,12 @@ function getGravatar($email, $s = 96, $d = 'mp', $r = 'g', $img = false, $atts =
 
 //获取文章缩略图
 function showThumbnail($widget)
-{ 
+{
     $attach = $widget->attachments(1)->attachment;
-    $pattern = '/\<img.*?src\=\"(.*?)\"[^>]*>/i'; 
+    $pattern = '/\<img.*?src\=\"(.*?)\"[^>]*>/i';
 if (preg_match_all($pattern, $widget->content, $thumbUrl)) {
          echo "<div class='post-thumb'> <img class='thumb' src='".$thumbUrl[1][0]."' /></div>";
     } elseif ($attach->isImage) {
       echo "<div class='post-thumb'> <img class='thumb' src='".$attach->url."' /></div>";
-    } 
-}
-
-function zanshang(){
-echo "成功！";
-$zs="你好！";
-echo $zs;
+    }
 }
