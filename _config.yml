@@ -11,13 +11,5 @@ excerpt_separator: "<!-- excerpt -->"
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
-exclude:
-  - CNAME
-  - Gemfile
-  - Gemfile.lock
-  - docker-compose.yml
-  - README.md
-  - .travis.yml
-  - .gitignore
-  - LICENSE
+
 ---
