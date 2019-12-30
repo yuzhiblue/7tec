@@ -2,10 +2,10 @@
 #这些设置用来自定义你的网站。如果你打开HTML文件，你会看到{{ site.title }}，
 # {{ site.email }}等等标签。你可以创建任何你想要自定义的变量，
 # 他们将会在模板里通过{{ site.我的变量 }}的方式生成。
-title:7TEC
-description:>
+title: 7TEC
+description: >
 我的GitHub网站。
-excerpt_separator:"<!-- excerpt -->"
+excerpt_separator: "<!-- excerpt -->"
 
 
 # Exclude from processing.
