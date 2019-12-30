@@ -4,9 +4,9 @@
 # 他们将会在模板里通过{{ site.我的变量 }}的方式生成。
 title:7TEC
 description:>
-"我的GitHub网站。"
-timezone: America/Detroit
-excerpt_separator: "<!-- excerpt -->"
+我的GitHub网站。
+timezone:China
+excerpt_separator:"<!-- excerpt -->"
 
 
 # Exclude from processing.
